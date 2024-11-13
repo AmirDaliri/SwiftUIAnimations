@@ -8,29 +8,49 @@
 import SwiftUI
 
 struct AnimationPagingView: View {
+    @State private var selectedTab = 0
+    private let tabCount = 6 // Update this count if you add more views
+
     var body: some View {
-        TabView {
+        VStack {
+            ZStack {
+                ForEach(0..<tabCount) { index in
+                    getView(for: index)
+                        .offset(x: CGFloat(index - selectedTab) * UIScreen.main.bounds.width)
+                        .animation(.easeInOut, value: selectedTab)
+                        .frame(width: UIScreen.main.bounds.width)
+                }
+            }
+            .ignoresSafeArea(.all)
+
+            // "Next" button
+            Button("Next") {
+                selectedTab = (selectedTab + 1) % tabCount
+            }
+            .padding()
+        }
+        .background(.black)
+    }
+
+    // Function to return each animation view based on index
+    @ViewBuilder
+    func getView(for index: Int) -> some View {
+        switch index {
+        case 0:
             SwirlingGalaxyView()
-                .tabItemLabel("Pulsating Fractal")
-            
+        case 1:
             HypnoticSpiralView()
-                .tabItemLabel("3D Rotating Sphere")
-            
+        case 2:
+            BreathingCirclesView()
+        case 3:
             MorphingFlowerView()
-                .tabItemLabel("Morphing Flower")
-            
+        case 4:
             MorphingGeometricAnimationView()
-                .tabItemLabel("Morphing Geometric Shape")
-            
-            PulsatingFractalViewContentView()
-                .tabItemLabel("PulsatingFractalView")
-            
+        case 5:
             InteractiveParticleWaveView()
-                .tabItemLabel("Interactive Particle Wave")
-            
-            // Add other animations here in the same way
-        }.ignoresSafeArea(.all)
-        .tabViewStyle(PageTabViewStyle(indexDisplayMode: .always))
+        default:
+            EmptyView()
+        }
     }
 }
 
