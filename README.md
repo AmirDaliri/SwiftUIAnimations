@@ -1,9 +1,9 @@
 # SwiftUI Animation Collection - AnimationPagingView
 
-
 <div align="center">
-    <img src="https://github.com/AmirDaliri/SwiftUIAnimations/blob/main/ScreenRecording.gif" alt="Animation Demo">
+    <img src="https://github.com/AmirDaliri/SwiftUIAnimations/blob/main/Demo.gif" alt="Animation Demo">
 </div>
+
 
 🎨 **SwiftUI Animation Collection** - A fun project to explore and showcase various SwiftUI animations in a paginated view. From pulsating fractals and interactive particle waves to 3D rotating spheres, each animation demonstrates the creative power of SwiftUI's animation capabilities. Perfect for iOS developers looking for inspiration or anyone interested in creative coding with SwiftUI!
 
